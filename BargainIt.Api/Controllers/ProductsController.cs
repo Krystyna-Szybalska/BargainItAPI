@@ -2,6 +2,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using BargainIt.Application.Requests.Products;
 using BargainIt.Application.Requests.Products.Commands.CreateProduct;
+using BargainIt.Application.Requests.Products.Commands.DeleteProduct;
 using BargainIt.Application.Requests.Products.Commands.UpdateProduct;
 using BargainIt.Application.Requests.Products.Queries.GetAllProducts;
 
@@ -34,10 +35,20 @@ public class ProductsController : ControllerBase {
 	}
 
 	[HttpPut("{id:guid}")]
-	[ProducesResponseType(typeof(ProductDto), StatusCodes.Status200OK)]
+	[ProducesResponseType(typeof(ProductDto), StatusCodes.Status200OK)] 
 	[ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
 	public async Task<ActionResult<ProductDto>> Update(Guid id, UpdateProductCommand request,
 	                                                   CancellationToken cancellationToken) {
+		request.Id = id;
+		var result = await _mediator.Send(request, cancellationToken);
+		return result;
+	}
+	
+	[HttpDelete("{id:guid}")]
+	[ProducesResponseType(typeof(ProductDto), StatusCodes.Status200OK)] //todo what is the role of those - i don't think they work well here
+	[ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+	public async Task<Unit> Delete(Guid id, DeleteProductCommand request, CancellationToken cancellationToken)
+	{
 		request.Id = id;
 		var result = await _mediator.Send(request, cancellationToken);
 		return result;

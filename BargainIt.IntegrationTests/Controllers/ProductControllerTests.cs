@@ -25,7 +25,8 @@ public class ProductControllerTests : BaseTest {
 	public async Task Post_WhenDataIsCorrect_ShouldBeOk() {
 		// Arrange
 		var request = new CreateProductCommand {
-			Name = "Test"
+			Name = "Test",
+			Price = 111.11m,
 		};
 		// Act
 		var response = await HttpClient.PostAsJsonAsync(Route, request);
@@ -39,7 +40,8 @@ public class ProductControllerTests : BaseTest {
 	public async Task Put_WhenEntityNotExist_ShouldBeOk() {
 		// Arrange
 		var request = new UpdateProductCommand {
-			Name = "Test"
+			Name = "Test",
+			Price = 111.11m,
 		};
 		// Act
 		var response = await HttpClient.PutAsJsonAsync($"{Route}/{Guid.NewGuid()}", request);
@@ -54,7 +56,8 @@ public class ProductControllerTests : BaseTest {
 		var product = await ApplicationDbContext.Products.FirstAsync();
 		var request = new UpdateProductCommand {
 			Id = product.Id,
-			Name = Guid.NewGuid().ToString().Substring(0, 10)
+			Name = Guid.NewGuid().ToString().Substring(0, 10),
+			Price = 111.11m,
 		};
 		// Act
 		var response = await HttpClient.PutAsJsonAsync($"{Route}/{request.Id}", request);
