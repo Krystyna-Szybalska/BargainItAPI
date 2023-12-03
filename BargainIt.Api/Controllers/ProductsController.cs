@@ -45,7 +45,7 @@ public class ProductsController : ControllerBase {
 	}
 	
 	[HttpDelete("{id:guid}")]
-	[ProducesResponseType(typeof(ProductDto), StatusCodes.Status200OK)] //todo what is the role of those - i don't think they work well here
+	[ProducesResponseType(StatusCodes.Status200OK)]
 	[ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
 	public async Task<Unit> Delete(Guid id, DeleteProductCommand request, CancellationToken cancellationToken)
 	{
