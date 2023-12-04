@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BargainIt.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231203143358_negotations")]
-    partial class negotations
+    [Migration("20231204174210_addNegotiations")]
+    partial class addNegotiations
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,7 +31,7 @@ namespace BargainIt.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<bool>("IsAccepted")
+                    b.Property<bool?>("IsAccepted")
                         .HasColumnType("boolean");
 
                     b.Property<Guid>("ProductId")
@@ -44,7 +44,7 @@ namespace BargainIt.Persistence.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("NegotiationEntity");
+                    b.ToTable("Negotiations");
                 });
 
             modelBuilder.Entity("BargainIt.Persistence.Entities.Products.ProductEntity", b =>

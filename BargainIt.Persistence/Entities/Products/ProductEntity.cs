@@ -7,5 +7,5 @@ public class ProductEntity {
 
 	public required string Name { get; set; }
 	public required decimal Price { get; set; }
-	public ICollection<NegotiationEntity>? Negotiations { get; set; }
+	public ICollection<NegotiationEntity> Negotiations { get; set; } = new List<NegotiationEntity>();
 }

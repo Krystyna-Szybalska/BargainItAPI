@@ -26,6 +26,7 @@
 }</component>
   <component name="ProjectId" id="2YwPGmjlaje33dedIG9vUIvx2vH" />
   <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
     <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -108,7 +109,8 @@
       <workItem from="1701433583366" duration="1916000" />
       <workItem from="1701519537556" duration="6689000" />
       <workItem from="1701602458093" duration="68000" />
-      <workItem from="1701602682319" duration="4964000" />
+      <workItem from="1701602682319" duration="12223000" />
+      <workItem from="1701705562774" duration="6141000" />
     </task>
     <servers />
   </component>

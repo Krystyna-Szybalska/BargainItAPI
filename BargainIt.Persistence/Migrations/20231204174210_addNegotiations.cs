@@ -6,25 +6,32 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BargainIt.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class negotations : Migration
+    public partial class addNegotiations : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.AddColumn<decimal>(
+                name: "Price",
+                table: "Products",
+                type: "numeric",
+                nullable: false,
+                defaultValue: 0m);
+
             migrationBuilder.CreateTable(
-                name: "NegotiationEntity",
+                name: "Negotiations",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     ProposedPrice = table.Column<decimal>(type: "numeric", nullable: false),
-                    IsAccepted = table.Column<bool>(type: "boolean", nullable: false),
+                    IsAccepted = table.Column<bool>(type: "boolean", nullable: true),
                     ProductId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_NegotiationEntity", x => x.Id);
+                    table.PrimaryKey("PK_Negotiations", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_NegotiationEntity_Products_ProductId",
+                        name: "FK_Negotiations_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "Id",
@@ -32,8 +39,8 @@ namespace BargainIt.Persistence.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_NegotiationEntity_ProductId",
-                table: "NegotiationEntity",
+                name: "IX_Negotiations_ProductId",
+                table: "Negotiations",
                 column: "ProductId");
         }
 
@@ -41,7 +48,11 @@ namespace BargainIt.Persistence.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "NegotiationEntity");
+                name: "Negotiations");
+
+            migrationBuilder.DropColumn(
+                name: "Price",
+                table: "Products");
         }
     }
 }

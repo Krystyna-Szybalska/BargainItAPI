@@ -28,7 +28,7 @@ namespace BargainIt.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<bool>("IsAccepted")
+                    b.Property<bool?>("IsAccepted")
                         .HasColumnType("boolean");
 
                     b.Property<Guid>("ProductId")
@@ -41,7 +41,7 @@ namespace BargainIt.Persistence.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("NegotiationEntity");
+                    b.ToTable("Negotiations");
                 });
 
             modelBuilder.Entity("BargainIt.Persistence.Entities.Products.ProductEntity", b =>

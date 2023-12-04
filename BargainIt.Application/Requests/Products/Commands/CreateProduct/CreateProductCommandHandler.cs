@@ -5,11 +5,11 @@ using BargainIt.Persistence.Entities.Products;
 
 namespace BargainIt.Application.Requests.Products.Commands.CreateProduct; 
 
-public class CreateProductsCommandHandler : IRequestHandler<CreateProductCommand, ProductDto> {
+public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, ProductDto> {
 	private readonly ApplicationDbContext _context;
 	private readonly IMapper _mapper;
 
-	public CreateProductsCommandHandler(ApplicationDbContext context, IMapper mapper) {
+	public CreateProductCommandHandler(ApplicationDbContext context, IMapper mapper) {
 		_context = context;
 		_mapper = mapper;
 	}
