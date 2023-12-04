@@ -29,12 +29,16 @@ public class CreateNegotiationCommandHandler : IRequestHandler<CreateNegotiation
 		if (product is null) throw new NotFoundException(typeof(ProductEntity), request.ProductId.ToString());
 
 		if (request.ProposedPrice > 2 * product.Price)
-			throw new VerificationException(ErrorCodes.Negotiations.PriceTooHighError, "Proposed price cannot be two times greater than product's price");
+			throw new VerificationException(ErrorCodes.Negotiations.PriceTooHighError, 
+				"Proposed price cannot be two times greater than product's price");
 
 		if (product.Negotiations.Any(n => n.IsAccepted == true)) 
-			throw new VerificationException(ErrorCodes.Negotiations.NegotiationAlreadyAccepted, "Previous client proposition already got accepted");
+			throw new VerificationException(ErrorCodes.Negotiations.NegotiationAlreadyAccepted, 
+				"Previous client proposition already got accepted");
 		
-		if (product.Negotiations.Count >= 3) throw new VerificationException(ErrorCodes.Negotiations.TooManyNegotiationAttempts, "There might be max three negotiation attempts");
+		if (product.Negotiations.Count >= 3) 
+			throw new VerificationException(ErrorCodes.Negotiations.TooManyNegotiationAttempts, 
+				"There might be maximum three negotiation attempts");
 		
 		var negotiation = _mapper.Map<NegotiationEntity>(request);
 		negotiation.Id = Guid.NewGuid();
