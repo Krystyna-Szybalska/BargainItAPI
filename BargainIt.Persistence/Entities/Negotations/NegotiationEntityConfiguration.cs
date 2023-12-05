@@ -1,6 +1,4 @@
-using BargainIt.Persistence.Entities.Products;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace BargainIt.Persistence.Entities.Negotations; 

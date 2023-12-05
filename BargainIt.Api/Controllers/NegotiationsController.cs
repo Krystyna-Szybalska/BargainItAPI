@@ -1,5 +1,5 @@
 using BargainIt.Application.Requests.Negotiations;
-using BargainIt.Application.Requests.Negotiations.Commands.CreateCommand;
+using BargainIt.Application.Requests.Negotiations.Commands.CreateNegotiation;
 using BargainIt.Application.Requests.Negotiations.Commands.ResolveNegotiation;
 using BargainIt.Application.Requests.Negotiations.Queries.GetAllNegotiations;
 using MediatR;

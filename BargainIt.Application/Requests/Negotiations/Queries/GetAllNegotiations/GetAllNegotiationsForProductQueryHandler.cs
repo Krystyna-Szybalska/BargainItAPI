@@ -1,6 +1,4 @@
 ﻿using BargainIt.Application.Behaviour.Exceptions;
-using BargainIt.Application.Requests.Products;
-using BargainIt.Application.Requests.Products.Queries.GetAllProducts;
 using BargainIt.Persistence;
 using BargainIt.Persistence.Entities.Products;
 using MapsterMapper;

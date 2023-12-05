@@ -5,7 +5,7 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace BargainIt.Api.Configuration.Swagger;
 
-// REF: https://github.com/dotnet/aspnet-api-versioning/blob/main/examples/AspNetCore/WebApi/OpenApiExample/SwaggerDefaultValues.cs
+// REF: https://github.com/dotnet/aspnet-api-versioning/blob/main/examples/AspNetCore/WebApi/OpenApiExample/proSwaggerDefaultValues.cs
 public class SwaggerDefaultValues : IOperationFilter
 {
     public void Apply( OpenApiOperation operation, OperationFilterContext context )

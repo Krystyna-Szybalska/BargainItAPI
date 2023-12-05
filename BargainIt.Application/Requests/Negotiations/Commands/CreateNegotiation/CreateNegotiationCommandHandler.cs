@@ -1,6 +1,5 @@
 using BargainIt.Application.Behaviour.Exceptions;
 using BargainIt.Application.Behaviour.Exceptions.ErrorCode;
-using BargainIt.Application.Requests.Negotiations.Commands.CreateCommand;
 using BargainIt.Persistence;
 using BargainIt.Persistence.Entities.Negotations;
 using BargainIt.Persistence.Entities.Products;

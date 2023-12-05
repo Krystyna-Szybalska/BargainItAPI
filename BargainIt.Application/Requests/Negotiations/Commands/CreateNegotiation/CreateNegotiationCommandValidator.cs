@@ -1,4 +1,3 @@
-using BargainIt.Application.Requests.Negotiations.Commands.CreateCommand;
 using FluentValidation;
 
 namespace BargainIt.Application.Requests.Negotiations.Commands.CreateNegotiation; 

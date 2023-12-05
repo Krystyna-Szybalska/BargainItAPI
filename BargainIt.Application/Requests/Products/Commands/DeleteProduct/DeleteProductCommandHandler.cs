@@ -1,20 +1,16 @@
-﻿using MapsterMapper;
-using MediatR;
+﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using BargainIt.Application.Behaviour.Exceptions;
 using BargainIt.Persistence;
 using BargainIt.Persistence.Entities.Products;
-using Microsoft.AspNetCore.Mvc;
 
 namespace BargainIt.Application.Requests.Products.Commands.DeleteProduct; 
 
 public class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommand> {
 	private readonly ApplicationDbContext _context;
-	private readonly IMapper _mapper;
 
-	public DeleteProductCommandHandler(ApplicationDbContext context, IMapper mapper) {
+	public DeleteProductCommandHandler(ApplicationDbContext context) {
 		_context = context;
-		_mapper = mapper;
 	}
 
 	public async Task<Unit> Handle(DeleteProductCommand request, CancellationToken cancellationToken) {
