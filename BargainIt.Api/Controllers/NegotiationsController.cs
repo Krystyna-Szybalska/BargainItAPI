@@ -1,22 +1,22 @@
 using BargainIt.Application.Requests.Negotiations;
 using BargainIt.Application.Requests.Negotiations.Commands.CreateNegotiation;
 using BargainIt.Application.Requests.Negotiations.Commands.ResolveNegotiation;
-using BargainIt.Application.Requests.Negotiations.Queries.GetAllNegotiations;
+using BargainIt.Application.Requests.Negotiations.Queries.GetAllNegotiationsForProduct;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BargainIt.Api.Controllers; 
+namespace BargainIt.Api.Controllers;
 
 [ApiController]
 [Produces("application/json")]
-[Route("api/negotiations")] 
-public class NegotiationsController : ControllerBase{
+[Route("api/negotiations")]
+public class NegotiationsController : ControllerBase {
 	private readonly IMediator _mediator;
 
 	public NegotiationsController(IMediator mediator) {
 		_mediator = mediator;
 	}
-	
+
 	[HttpPost]
 	[ProducesResponseType(typeof(NegotiationDto), StatusCodes.Status200OK)]
 	[ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
@@ -26,7 +26,7 @@ public class NegotiationsController : ControllerBase{
 		var result = await _mediator.Send(request, cancellationToken);
 		return result;
 	}
-	
+
 	[HttpGet]
 	[ProducesResponseType(typeof(NegotiationDto[]), StatusCodes.Status200OK)]
 	public async Task<ActionResult<NegotiationDto[]>> GetAll([FromQuery] GetAllNegotiationsForProductQuery request,
@@ -36,7 +36,7 @@ public class NegotiationsController : ControllerBase{
 	}
 
 	[HttpPut("{id:guid}/resolve")]
-	[ProducesResponseType( StatusCodes.Status200OK)] 
+	[ProducesResponseType(StatusCodes.Status200OK)]
 	public async Task<Unit> ResolveNegotiation(Guid id, ResolveNegotiationCommand request,
 		CancellationToken cancellationToken) {
 		request.Id = id;

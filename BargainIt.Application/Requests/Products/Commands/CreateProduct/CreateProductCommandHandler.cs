@@ -3,7 +3,7 @@ using MediatR;
 using BargainIt.Persistence;
 using BargainIt.Persistence.Entities.Products;
 
-namespace BargainIt.Application.Requests.Products.Commands.CreateProduct; 
+namespace BargainIt.Application.Requests.Products.Commands.CreateProduct;
 
 public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, ProductDto> {
 	private readonly ApplicationDbContext _context;

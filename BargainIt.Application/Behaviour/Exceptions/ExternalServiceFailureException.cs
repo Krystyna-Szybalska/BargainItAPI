@@ -3,7 +3,8 @@
 namespace BargainIt.Application.Behaviour.Exceptions;
 
 public class ExternalServiceFailureException : BaseApplicationException {
-	public ExternalServiceFailureException() : this("External service failed", ErrorCodes.Default.ExternalServiceFailed) { }
+	public ExternalServiceFailureException() :
+		this("External service failed", ErrorCodes.Default.ExternalServiceFailed) { }
 
 	public ExternalServiceFailureException(string message) : this(message, ErrorCodes.Default.ExternalServiceFailed) { }
 	public ExternalServiceFailureException(string message, string errorCode) : base(message, errorCode) { }

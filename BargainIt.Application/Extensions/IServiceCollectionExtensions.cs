@@ -30,8 +30,8 @@ public static class IServiceCollectionExtensions {
 
 	private static void AddDbContext(this IServiceCollection services, IConfiguration configuration) {
 		services.AddDbContext<ApplicationDbContext>(o => o.UseNpgsql(configuration.GetConnectionString("Default")),
-			        optionsLifetime: ServiceLifetime.Singleton)
-		        .AddDbContextFactory<ApplicationDbContext>();
+				optionsLifetime: ServiceLifetime.Singleton)
+			.AddDbContextFactory<ApplicationDbContext>();
 	}
 
 	private static void AddFluentValidation(this IServiceCollection services) {

@@ -3,37 +3,31 @@ using Swashbuckle.AspNetCore.Filters;
 
 namespace BargainIt.Api.Configuration.Swagger;
 
-public static class Extensions
-{
-    public static IServiceCollection AddSwagger(this IServiceCollection services)
-    {
-        services.ConfigureOptions<ConfigureSwaggerOptions>();
-        services.AddSwaggerGenNewtonsoftSupport();
-        services.AddSwaggerGen(opt =>
-        {
-            opt.ExampleFilters();
-            opt.OperationFilter<SwaggerDefaultValues>();
-            opt.SupportNonNullableReferenceTypes();
-        });
-        services.AddFluentValidationRulesToSwagger();
-        services.AddSwaggerExamplesFromAssemblyOf<IApiMarker>();
-        return services;
-    }
+public static class Extensions {
+	public static IServiceCollection AddSwagger(this IServiceCollection services) {
+		services.ConfigureOptions<ConfigureSwaggerOptions>();
+		services.AddSwaggerGenNewtonsoftSupport();
+		services.AddSwaggerGen(opt => {
+			opt.ExampleFilters();
+			opt.OperationFilter<SwaggerDefaultValues>();
+			opt.SupportNonNullableReferenceTypes();
+		});
+		services.AddFluentValidationRulesToSwagger();
+		services.AddSwaggerExamplesFromAssemblyOf<IApiMarker>();
+		return services;
+	}
 
-    public static void UseSwaggerUi(this WebApplication app)
-    {
-        app.UseSwagger();
-        app.UseSwaggerUI(options =>
-        {
-            var descriptions = app.DescribeApiVersions();
+	public static void UseSwaggerUi(this WebApplication app) {
+		app.UseSwagger();
+		app.UseSwaggerUI(options => {
+			var descriptions = app.DescribeApiVersions();
 
-            // build a swagger endpoint for each discovered API version
-            foreach ( var description in descriptions )
-            {
-                var url = $"/swagger/{description.GroupName}/swagger.json";
-                var name = description.GroupName.ToUpperInvariant();
-                options.SwaggerEndpoint( url, name );
-            }
-        });
-    }
+			// build a swagger endpoint for each discovered API version
+			foreach (var description in descriptions) {
+				var url = $"/swagger/{description.GroupName}/swagger.json";
+				var name = description.GroupName.ToUpperInvariant();
+				options.SwaggerEndpoint(url, name);
+			}
+		});
+	}
 }

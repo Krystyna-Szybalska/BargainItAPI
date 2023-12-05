@@ -14,7 +14,7 @@ public class FixtureSetup {
 	public async Task OneTimeSetup() {
 		_applicationFactory = new BargainItApiWebApplicationFactory();
 		await _applicationFactory.InitializeAsync();
-		
+
 		HttpClient = _applicationFactory.HttpClient;
 		ResetDatabase = _applicationFactory.ResetDatabase;
 		GetApplicationDbContext = CreateApplicationDbContext;
@@ -27,7 +27,7 @@ public class FixtureSetup {
 
 	private static ApplicationDbContext CreateApplicationDbContext() {
 		var context = _applicationFactory.Services.GetRequiredService<IDbContextFactory<ApplicationDbContext>>()
-		                                 .CreateDbContext();
+			.CreateDbContext();
 		context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
 		return context;
 	}

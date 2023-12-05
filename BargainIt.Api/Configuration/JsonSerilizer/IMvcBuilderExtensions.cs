@@ -1,13 +1,9 @@
-﻿namespace BargainIt.Api.Configuration.JsonSerilizer; 
+﻿namespace BargainIt.Api.Configuration.JsonSerilizer;
 
 // ReSharper disable once InconsistentNaming
 public static class IMvcBuilderExtensions {
-	public static IMvcBuilder AddJsonSerializer(this IMvcBuilder builder)
-	{
-		builder.AddNewtonsoftJson(options =>
-		{
-			options.SerializerSettings.AddJsonSettings();
-		});
+	public static IMvcBuilder AddJsonSerializer(this IMvcBuilder builder) {
+		builder.AddNewtonsoftJson(options => { options.SerializerSettings.AddJsonSettings(); });
 		return builder;
 	}
 }

@@ -9,8 +9,8 @@ using BargainIt.Application.Extensions;
 using BargainIt.Shared.Extensions;
 
 Log.Logger = new LoggerConfiguration()
-             .WriteTo.Console()
-             .CreateLogger();
+	.WriteTo.Console()
+	.CreateLogger();
 
 Log.Information("Starting up");
 
@@ -32,9 +32,9 @@ void RunApplication() {
 	var builder = WebApplication.CreateBuilder(args);
 	// Logging
 	builder.Host.UseSerilog((ctx, lc) => lc
-	                                     .Enrich.FromLogContext()
-	                                     .WriteTo.Console()
-	                                     .ReadFrom.Configuration(ctx.Configuration));
+		.Enrich.FromLogContext()
+		.WriteTo.Console()
+		.ReadFrom.Configuration(ctx.Configuration));
 	// Add services to the container.
 	builder.Services.AddShared(builder.Configuration);
 	builder.Services.AddApplication(builder.Configuration);
@@ -46,19 +46,11 @@ void RunApplication() {
 	builder.Host.AddServicesValidationOnStart();
 
 	var app = builder.Build();
-	app.UseCors(policyBuilder =>
-	{
-		policyBuilder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
-	});
-	app.UseSerilogRequestLogging(options =>
-	{
-		options.GetLevel = LogHelper.ExcludeHealthChecks;
-	});
+	app.UseCors(policyBuilder => { policyBuilder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod(); });
+	app.UseSerilogRequestLogging(options => { options.GetLevel = LogHelper.ExcludeHealthChecks; });
 	app.UseApplication();
 	// Configure the HTTP request pipeline.
-	if (!app.Environment.IsProduction()) {
-		app.UseSwaggerUi();
-	}
+	if (!app.Environment.IsProduction()) app.UseSwaggerUi();
 	app.MapHealthChecks();
 	app.MapControllers();
 	app.Run();

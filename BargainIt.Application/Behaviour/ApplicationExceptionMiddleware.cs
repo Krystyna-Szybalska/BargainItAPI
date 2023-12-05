@@ -38,7 +38,7 @@ public class ApplicationExceptionMiddleware {
 		var details = new ProblemDetails {
 			Title = e.ErrorCode,
 			Status = statusCode,
-			Detail = e.Message
+			Detail = e.Message,
 		};
 		await response.WriteAsJsonAsync(details);
 	}

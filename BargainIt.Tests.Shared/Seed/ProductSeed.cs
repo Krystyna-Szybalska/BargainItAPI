@@ -10,7 +10,7 @@ public class ProductSeed : BaseSeed {
 		var product = new ProductEntity() {
 			Id = Guid.NewGuid(),
 			Name = Guid.NewGuid().ToString().Substring(0, 10),
-			Price =  (decimal)(new Random().NextDouble() * 10000) 
+			Price = (decimal)(Random.Shared.NextDouble() * 10000),
 		};
 
 		Context.Products.Add(product);

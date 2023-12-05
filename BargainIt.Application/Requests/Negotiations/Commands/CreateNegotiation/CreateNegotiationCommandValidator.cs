@@ -1,6 +1,6 @@
 using FluentValidation;
 
-namespace BargainIt.Application.Requests.Negotiations.Commands.CreateNegotiation; 
+namespace BargainIt.Application.Requests.Negotiations.Commands.CreateNegotiation;
 
 public class CreateNegotiationCommandValidator : AbstractValidator<CreateNegotiationCommand> {
 	public CreateNegotiationCommandValidator() {

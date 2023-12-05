@@ -7,7 +7,8 @@ public abstract class BaseApplicationException : Exception {
 		ErrorCode = errorCode;
 	}
 
-	protected BaseApplicationException(string message, string errorCode, Exception innerException) : base(message, innerException) {
+	protected BaseApplicationException(string message, string errorCode, Exception innerException) : base(message,
+		innerException) {
 		ErrorCode = errorCode;
 	}
 }

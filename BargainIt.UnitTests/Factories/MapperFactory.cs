@@ -5,17 +5,15 @@ using BargainIt.Application;
 
 namespace BargainIt.UnitTests.Factories;
 
-public static class MapperFactory
-{
-    private static readonly Lazy<IMapper> LazyMapper = new(InitMapper, 
-        LazyThreadSafetyMode.ExecutionAndPublication);
+public static class MapperFactory {
+	private static readonly Lazy<IMapper> LazyMapper = new(InitMapper,
+		LazyThreadSafetyMode.ExecutionAndPublication);
 
-    private static IMapper InitMapper()
-    {
-        var config = new TypeAdapterConfig();
-        config.Scan(Assembly.GetAssembly(typeof(IApplicationMarker))!);
-        return new Mapper(config);
-    }
+	private static IMapper InitMapper() {
+		var config = new TypeAdapterConfig();
+		config.Scan(Assembly.GetAssembly(typeof(IApplicationMarker))!);
+		return new Mapper(config);
+	}
 
-    public static IMapper Mapper => LazyMapper.Value;
+	public static IMapper Mapper => LazyMapper.Value;
 }

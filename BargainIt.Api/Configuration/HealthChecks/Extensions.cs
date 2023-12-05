@@ -4,7 +4,7 @@ namespace BargainIt.Api.Configuration.HealthChecks;
 
 public static class Extensions {
 	public static IServiceCollection AddHealthChecks(this IServiceCollection services, IConfiguration configuration,
-	                                                 IWebHostEnvironment webHostEnvironment) {
+		IWebHostEnvironment webHostEnvironment) {
 		services
 			.AddHealthChecks()
 			.AddNpgSql(configuration.GetConnectionString("Default")!);
@@ -21,7 +21,7 @@ public static class Extensions {
 					result.Entries.Select(e => $"Name: {e.Key}, Status: {e.Value.Status}"));
 				return context.Response.WriteAsync(
 					$"{result.Status.ToString()}{Environment.NewLine}{entries}");
-			}
+			},
 		});
 
 		return builder;

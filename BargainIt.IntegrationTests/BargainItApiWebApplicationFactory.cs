@@ -19,14 +19,14 @@ namespace BargainIt.IntegrationTests;
 
 public class BargainItApiWebApplicationFactory : WebApplicationFactory<IApiMarker> {
 	private readonly PostgreSqlTestcontainer _dbContainer = new TestcontainersBuilder<PostgreSqlTestcontainer>()
-	                                                             .WithDatabase(
-		                                                             new PostgreSqlTestcontainerConfiguration(
-			                                                             "postgres:14.7-alpine3.17") {
-			                                                             Database = "application",
-			                                                             Username = "postgres",
-			                                                             Password = "password"
-		                                                             })
-	                                                             .Build();
+		.WithDatabase(
+			new PostgreSqlTestcontainerConfiguration(
+				"postgres:14.7-alpine3.17") {
+				Database = "application",
+				Username = "postgres",
+				Password = "password",
+			})
+		.Build();
 
 
 	public HttpClient HttpClient { get; private set; } = default!;
@@ -51,8 +51,8 @@ public class BargainItApiWebApplicationFactory : WebApplicationFactory<IApiMarke
 			DbAdapter = DbAdapter.Postgres,
 			WithReseed = true,
 			SchemasToInclude = new[] {
-				"public"
-			}
+				"public",
+			},
 		});
 	}
 
@@ -67,10 +67,10 @@ public class BargainItApiWebApplicationFactory : WebApplicationFactory<IApiMarke
 		base.ConfigureWebHost(builder);
 
 		var config = new ConfigurationBuilder()
-		             .AddInMemoryCollection(new Dictionary<string, string?> {
-			             ["ConnectionStrings:Default"] = _dbContainer.ConnectionString
-		             })
-		             .Build();
+			.AddInMemoryCollection(new Dictionary<string, string?> {
+				["ConnectionStrings:Default"] = _dbContainer.ConnectionString,
+			})
+			.Build();
 		builder.UseConfiguration(config);
 
 		// Doesn't work in .Net 6: https://github.com/dotnet/aspnetcore/issues/37680
@@ -82,13 +82,13 @@ public class BargainItApiWebApplicationFactory : WebApplicationFactory<IApiMarke
 		builder.ConfigureAppConfiguration(configBuilder => {
 			configBuilder.AddInMemoryCollection(
 				new Dictionary<string, string?> {
-					["Serilog:MinimumLevel:Override:Microsoft"] = "Warning"
+					["Serilog:MinimumLevel:Override:Microsoft"] = "Warning",
 				});
 		});
 
 		builder.ConfigureServices(services => {
 			var sp = services.BuildServiceProvider();
-			
+
 			using var scope = sp.CreateScope();
 			var scopedServices = scope.ServiceProvider;
 			var db = scopedServices.GetRequiredService<ApplicationDbContext>();

@@ -1,4 +1,4 @@
-﻿namespace BargainIt.Application.Requests.Products; 
+﻿namespace BargainIt.Application.Requests.Products;
 
 public class ProductDto {
 	public Guid Id { get; set; }

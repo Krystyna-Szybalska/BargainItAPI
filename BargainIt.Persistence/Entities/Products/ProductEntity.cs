@@ -1,6 +1,6 @@
 ﻿using BargainIt.Persistence.Entities.Negotations;
 
-namespace BargainIt.Persistence.Entities.Products; 
+namespace BargainIt.Persistence.Entities.Products;
 
 public class ProductEntity {
 	public Guid Id { get; set; }

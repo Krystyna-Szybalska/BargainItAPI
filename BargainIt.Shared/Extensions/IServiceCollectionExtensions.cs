@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using BargainIt.Shared.Services.DateTimeProviders;
 
-namespace BargainIt.Shared.Extensions; 
+namespace BargainIt.Shared.Extensions;
 
 // ReSharper disable once InconsistentNaming
 public static class IServiceCollectionExtensions {

@@ -40,11 +40,12 @@ public class ProductControllerTests : BaseTest {
 	public async Task Put_WhenEntityNotExist_ShouldBeOk() {
 		// Arrange
 		var request = new UpdateProductCommand {
+			Id = Guid.NewGuid(),
 			Name = "Test",
 			Price = 111.11m,
 		};
 		// Act
-		var response = await HttpClient.PutAsJsonAsync($"{Route}/{Guid.NewGuid()}", request);
+		var response = await HttpClient.PutAsJsonAsync($"{Route}/{request.Id}", request);
 		// Assert
 		response.Should().Be404NotFound();
 	}

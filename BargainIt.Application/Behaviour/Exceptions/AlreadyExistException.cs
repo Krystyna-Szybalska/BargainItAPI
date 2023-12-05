@@ -12,7 +12,7 @@ public class AlreadyExistsException : BaseApplicationException {
 
 	public AlreadyExistsException(Type entityType, string id) : base(
 		$"{entityType.Name} with id {id} already exists", ErrorCodes.Default.AlreadyExist) { }
-	
+
 	public AlreadyExistsException(string message, string errorCode) : base(message, errorCode) { }
 
 	public AlreadyExistsException(string message, Exception innerException) : base(message,

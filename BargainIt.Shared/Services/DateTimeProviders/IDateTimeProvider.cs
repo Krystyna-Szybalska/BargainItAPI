@@ -1,4 +1,4 @@
-﻿namespace BargainIt.Shared.Services.DateTimeProviders; 
+﻿namespace BargainIt.Shared.Services.DateTimeProviders;
 
 public interface IDateTimeProvider {
 	DateTime UtcNow { get; }

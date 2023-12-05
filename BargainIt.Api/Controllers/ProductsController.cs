@@ -21,7 +21,7 @@ public class ProductsController : ControllerBase {
 	[HttpGet]
 	[ProducesResponseType(typeof(ProductDto[]), StatusCodes.Status200OK)]
 	public async Task<ActionResult<ProductDto[]>> GetAll([FromQuery] GetAllProductsQuery request,
-	                                                             CancellationToken cancellationToken) {
+		CancellationToken cancellationToken) {
 		var result = await _mediator.Send(request, cancellationToken);
 		return result;
 	}
@@ -29,26 +29,25 @@ public class ProductsController : ControllerBase {
 	[HttpPost]
 	[ProducesResponseType(typeof(ProductDto), StatusCodes.Status200OK)]
 	public async Task<ActionResult<ProductDto>> Create(CreateProductCommand request,
-	                                                   CancellationToken cancellationToken) {
+		CancellationToken cancellationToken) {
 		var result = await _mediator.Send(request, cancellationToken);
 		return result;
 	}
 
 	[HttpPut("{id:guid}")]
-	[ProducesResponseType(typeof(ProductDto), StatusCodes.Status200OK)] 
+	[ProducesResponseType(typeof(ProductDto), StatusCodes.Status200OK)]
 	[ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
 	public async Task<ActionResult<ProductDto>> Update(Guid id, UpdateProductCommand request,
-	                                                   CancellationToken cancellationToken) {
+		CancellationToken cancellationToken) {
 		request.Id = id;
 		var result = await _mediator.Send(request, cancellationToken);
 		return result;
 	}
-	
+
 	[HttpDelete("{id:guid}")]
 	[ProducesResponseType(StatusCodes.Status200OK)]
 	[ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
-	public async Task<Unit> Delete(Guid id, DeleteProductCommand request, CancellationToken cancellationToken)
-	{
+	public async Task<Unit> Delete(Guid id, DeleteProductCommand request, CancellationToken cancellationToken) {
 		request.Id = id;
 		var result = await _mediator.Send(request, cancellationToken);
 		return result;

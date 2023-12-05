@@ -1,5 +1,3 @@
-﻿namespace BargainIt.Application; 
+﻿namespace BargainIt.Application;
 
-public interface IApplicationMarker {
-	
-}
+public interface IApplicationMarker { }
