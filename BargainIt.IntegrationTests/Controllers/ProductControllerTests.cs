@@ -1,5 +1,7 @@
-﻿using BargainIt.Application.Requests.Products;
+﻿using System.Net.Http.Json;
+using BargainIt.Application.Requests.Products;
 using BargainIt.Application.Requests.Products.Commands.CreateProduct;
+using BargainIt.Application.Requests.Products.Commands.DeleteProduct;
 using BargainIt.Application.Requests.Products.Commands.UpdateProduct;
 using BargainIt.Tests.Shared.Seed;
 
@@ -37,7 +39,7 @@ public class ProductControllerTests : BaseTest {
 	}
 
 	[Test]
-	public async Task Put_WhenEntityNotExist_ShouldBeOk() {
+	public async Task Put_WhenEntityNotExist_ShouldBe404NotFound() {
 		// Arrange
 		var request = new UpdateProductCommand {
 			Id = Guid.NewGuid(),
@@ -67,4 +69,5 @@ public class ProductControllerTests : BaseTest {
 		var result = await response.Content.DeserializeContentAsync<ProductDto>();
 		result.Should().BeEquivalentTo(request, options => options.ExcludingMissingMembers());
 	}
+
 }

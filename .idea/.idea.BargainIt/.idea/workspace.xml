@@ -17,6 +17,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/80d129b962f1305236dad74bbe67184bc9e315ffa77287b351ba7ab194f5767/ProducesResponseTypeAttribute.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a5e3373cd3bcfa5ed6891aa5bbb833498db819977f9d303ff1c135268d315/QueryBuilder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/c1558d44394b3be0f45e5cfe17d84d06c60a9ea79543868636a2edb57c2342/IRequestHandler.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -116,7 +117,7 @@
       <workItem from="1701602458093" duration="68000" />
       <workItem from="1701602682319" duration="12223000" />
       <workItem from="1701705562774" duration="12157000" />
-      <workItem from="1701767148779" duration="12830000" />
+      <workItem from="1701767148779" duration="17148000" />
     </task>
     <servers />
   </component>
