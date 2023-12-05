@@ -47,8 +47,10 @@ public class ProductsController : ControllerBase {
 	[HttpDelete("{id:guid}")]
 	[ProducesResponseType(StatusCodes.Status200OK)]
 	[ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
-	public async Task<Unit> Delete(Guid id, DeleteProductCommand request, CancellationToken cancellationToken) {
-		request.Id = id;
+	public async Task<Unit> Delete(Guid id, CancellationToken cancellationToken) {
+		var request = new DeleteProductCommand {
+			Id = id,
+		};
 		var result = await _mediator.Send(request, cancellationToken);
 		return result;
 	}

@@ -1,5 +1,4 @@
-﻿using System.Net.Http.Json;
-using BargainIt.Application.Requests.Products;
+﻿using BargainIt.Application.Requests.Products;
 using BargainIt.Application.Requests.Products.Commands.CreateProduct;
 using BargainIt.Application.Requests.Products.Commands.DeleteProduct;
 using BargainIt.Application.Requests.Products.Commands.UpdateProduct;
@@ -7,7 +6,7 @@ using BargainIt.Tests.Shared.Seed;
 
 namespace BargainIt.IntegrationTests.Controllers;
 
-public class ProductControllerTests : BaseTest {
+public class ProductsControllerTests : BaseTest {
 	private const string Route = "api/products";
 
 	[Test]
@@ -69,5 +68,33 @@ public class ProductControllerTests : BaseTest {
 		var result = await response.Content.DeserializeContentAsync<ProductDto>();
 		result.Should().BeEquivalentTo(request, options => options.ExcludingMissingMembers());
 	}
+	
+	//todo deletetests - kiedy jest poprawny i kiedy nie jest poprawny id
 
+	[Test]
+	public async Task Delete_WhenDataIsCorrect_ShouldBeOk() {
+		// Arrange
+		await ApplicationDbContext.SeedWithAsync<ProductSeed>();
+		var product = await ApplicationDbContext.Products.FirstAsync();
+		var request = new DeleteProductCommand {
+			Id = product.Id,
+		};
+		// Act
+		var response = await HttpClient.DeleteAsync($"{Route}/{request.Id}");
+		// Assert
+		response.Should().Be200Ok();
+	}
+	
+	[Test]
+	public async Task Delete_WhenEntityNotExist_ShouldBe404NotFound() {
+		// Arrange
+		var request = new DeleteProductCommand {
+			Id = Guid.NewGuid(),
+		};
+		// Act
+		var response = await HttpClient.DeleteAsync($"{Route}/{request.Id}");
+
+		// Assert
+		response.Should().Be404NotFound();
+	}
 }
