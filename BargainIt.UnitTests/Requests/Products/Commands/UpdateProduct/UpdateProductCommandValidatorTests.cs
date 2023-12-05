@@ -18,7 +18,7 @@ public class UpdateProductCommandValidatorTests {
 		var request = new UpdateProductCommand {
 			Id = default,
 			Name = String.Empty,
-			Price = 1
+			Price = 1,
 		};
 		// Act
 		var response = _sut.TestValidate(request);

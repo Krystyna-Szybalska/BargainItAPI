@@ -116,12 +116,22 @@
       <workItem from="1701602458093" duration="68000" />
       <workItem from="1701602682319" duration="12223000" />
       <workItem from="1701705562774" duration="12157000" />
-      <workItem from="1701767148779" duration="6708000" />
+      <workItem from="1701767148779" duration="12830000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnitTestsCoverage.Settings">
+    <option name="coveragePercentColumnWidth" value="150" />
+    <option name="sortOrder" value="DESCENDING" />
+    <option name="sortedColumn" value="1" />
+    <option name="symbolColumnWidth" value="483" />
+    <coverage-tree-state>
+      <expand />
+      <select />
+    </coverage-tree-state>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
